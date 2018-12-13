@@ -15,11 +15,11 @@ public class RibbonTestService {
     RestTemplate restTemplate;
 
     @HystrixCommand(fallbackMethod = "homeFallback")
-    public String RibbonHome(String name){
-        return restTemplate.getForObject("http://SERVICE-HI/hi?name="+name,String.class);
+    public String RibbonHome(String name) {
+        return restTemplate.getForObject("http://SERVICE-HI/hi?name=" + name, String.class);
     }
 
-    public String homeFallback(String name){
-        return "hi,"+name+",sorry,server error!";
+    public String homeFallback(String name) {
+        return "hi," + name + ",sorry,server error!";
     }
 }

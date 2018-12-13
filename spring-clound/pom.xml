@@ -12,6 +12,14 @@
     <modules>
         <module>clound-config-client</module>
         <module>clound-config-server</module>
+        <module>clound-service-client</module>
+        <module>clound-service-client-a</module>
+        <module>clound-service-server</module>
+        <module>clound-sleuth</module>
+        <module>feign-server</module>
+        <module>hystrix</module>
+        <module>ribbon-server</module>
+        <module>zuul</module>
     </modules>
 
 </project>

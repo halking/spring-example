@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @EnableEurekaServer
 public class CloundServiceServerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CloundServiceServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CloundServiceServerApplication.class, args);
+    }
 }

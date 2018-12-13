@@ -17,6 +17,6 @@ public class FeignController {
 
     @GetMapping(value = "/hi")
     public String sayHi(@RequestParam String name) {
-        return feignService.home( name );
+        return feignService.home(name);
     }
 }

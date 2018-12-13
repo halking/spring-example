@@ -12,8 +12,8 @@ eureka:
   instance:
     hostname: peer1
   client:
-#    registerWithEureka: false
-#    fetchRegistry: false
+    #    registerWithEureka: false
+    #    fetchRegistry: false
     serviceUrl:
       defaultZone: http://peer2:8760/eureka/,http://peer3:8761/eureka/
 
@@ -31,8 +31,8 @@ eureka:
   instance:
     hostname: peer2
   client:
-#    registerWithEureka: false
-#    fetchRegistry: false
+    #    registerWithEureka: false
+    #    fetchRegistry: false
     serviceUrl:
       defaultZone: http://peer1:8759/eureka/,http://peer3:8761/eureka/
 
@@ -49,7 +49,7 @@ eureka:
   instance:
     hostname: peer3
   client:
-#    registerWithEureka: false
-#    fetchRegistry: false
+    #    registerWithEureka: false
+    #    fetchRegistry: false
     serviceUrl:
       defaultZone: http://peer1:8759/eureka/,http://peer2:8760/eureka/
