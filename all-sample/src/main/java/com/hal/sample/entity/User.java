@@ -1,7 +1,9 @@
 package com.hal.sample.entity;
 
+import com.hal.sample.enums.SourceType;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,5 +35,9 @@ public class User implements Serializable {
   private Integer gender;
 
   private String email;
+
+  private SourceType sourceType;
+
+  private LocalDateTime createTime;
 
 }
