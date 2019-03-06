@@ -1,14 +1,21 @@
 package com.hal.sample.util;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.endsWith;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.substringBefore;
-import static org.apache.logging.log4j.util.Strings.isBlank;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
@@ -20,6 +27,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.util.ReflectionUtils;
 
 /**
  * Created by Steven.HUANG on 2018/12/25.
@@ -29,8 +37,6 @@ public class ExcelUtil {
 
   private final static String LESS_THAN_EQUAL_2003V = "xls";
   private final static String GREATER_THAN_EQUAL_2007V = "xlsx";
-
-  private static int rowNo = 0;
 
   /**
    * @param cell
@@ -115,16 +121,44 @@ public class ExcelUtil {
     return wb;
   }
 
-  public static Sheet buildTitle(String sheetName, List<String> heads) {
+  public static void buildContent(OutputStream outputStream, String sheetName,
+    Collection<String> heads, Consumer<Sheet> consumer) throws Exception {
     Workbook workbook = new XSSFWorkbook();
     Sheet sheet = workbook.createSheet(sheetName);
-    Row row = sheet.createRow(rowNo++);
-    for (int i = 0; i < heads.size(); i++) {
-      String title = heads.get(i);
-      Cell cell = row.createCell(i);
-      cell.setCellValue(title);
+    int rowIndex = 0;
+    Row firstRow = sheet.createRow(rowIndex);
+    int colIndex = 0;
+    for (String value : heads) {
+      firstRow.createCell(colIndex++, CellType.STRING).setCellValue(value);
     }
-    return sheet;
+
+    consumer.accept(sheet);
+
+    workbook.write(outputStream);
+  }
+
+  public static <T> void buildContent(OutputStream outputStream,
+    String sheetName, Map<String, String> heads, Collection<T> datum)
+    throws Exception {
+
+    buildContent(outputStream, sheetName, heads.values(), sheet -> {
+      Iterator<T> iterator = datum.iterator();
+      int rowIndex = 0;
+      while (iterator.hasNext()) {
+        Row row = sheet.createRow(++rowIndex);
+
+        T object = iterator.next();
+        for (String key : heads.keySet()) {
+          int colIndex = 0;
+          String getMethod = "get" + capitalize(key);
+          Method method = ReflectionUtils.findMethod(object.getClass(), getMethod);
+          Object value = ReflectionUtils.invokeMethod(method, object);
+          addCell(row, colIndex++, value);
+        }
+      }
+    });
+
+
   }
 
   public static String dealCellType(Object object) {
@@ -133,5 +167,32 @@ public class ExcelUtil {
       return substringBefore(str, ".0");
     }
     return str;
+  }
+
+  private static Cell addCell(Row row, int column, Object val) {
+    Cell cell = row.createCell(column);
+    try {
+      if (val == null) {
+        cell.setCellValue("");
+      } else {
+        if (val instanceof String) {
+          cell.setCellValue((String) val);
+        } else if (val instanceof Integer) {
+          cell.setCellValue((Integer) val);
+        } else if (val instanceof Long) {
+          cell.setCellValue((Long) val);
+        } else if (val instanceof Double) {
+          cell.setCellValue((Double) val);
+        } else if (val instanceof Float) {
+          cell.setCellValue((Float) val);
+        } else if (val instanceof Enum) {
+          cell.setCellValue(val.toString());
+        }
+      }
+    } catch (Exception ex) {
+      log.error("Set cell value [" + row.getRowNum() + "," + column + "] error: " + ex.toString());
+      cell.setCellValue(val.toString());
+    }
+    return cell;
   }
 }

@@ -1,5 +1,6 @@
 package com.hal.sample.base;
 
+import java.text.MessageFormat;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -33,4 +34,33 @@ public class StringTest {
 
     MatcherAssert.assertThat(value.substring(value.length()-3), Matchers.is("abc"));
   }
+
+  @Test
+  public void LongToString(){
+    Long value = 3002L;
+
+    System.out.println(value.toString());
+    MatcherAssert.assertThat(value.toString(), Matchers.is("3002"));
+    MatcherAssert.assertThat(Long.toString(value), Matchers.is("3002"));
+    System.out.println(Long.toString(value));
+  }
+
+  @Test
+  public void format(){
+    System.out.println(MessageFormat.format("test {0}",1));
+  }
+
+  @Test
+  public void test(){
+    String str = "FY2019";
+
+    Boolean flag = str.startsWith("FY");
+
+    System.out.println(str.indexOf("FY"));
+    String first = str.substring("FY".length());
+
+    MatcherAssert.assertThat(flag, Matchers.is(true));
+    MatcherAssert.assertThat(first, Matchers.is("2019"));
+  }
+
 }

@@ -40,4 +40,6 @@ public class User implements Serializable {
 
   private LocalDateTime createTime;
 
+  private Role role;
+
 }

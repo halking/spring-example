@@ -4,10 +4,13 @@ import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.hal.sample.entity.GroupSessionDto;
 import com.hal.sample.entity.User;
 import com.hal.sample.enums.SourceType;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -25,6 +28,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class StreamTest {
   private List<User> users;
 
+  private Set<GroupSessionDto> sessions;
+
   @Before
   public void setup(){
     User user1 = User.builder().name("name1").birthday(LocalDate.now()).gender(1).age(13)
@@ -40,6 +45,15 @@ public class StreamTest {
         .sourceType(SourceType.Sale).build();
 
     users = Lists.newArrayList(user1,user2,user3,user4,user5);
+
+    GroupSessionDto session1 = GroupSessionDto.builder().date(
+        LocalDate.of(2019,1,30)).build();
+    GroupSessionDto session2 = GroupSessionDto.builder().date(
+        LocalDate.of(2019,1,29)).build();
+    GroupSessionDto session3 = GroupSessionDto.builder().date(
+        LocalDate.of(2019,1,31)).build();
+
+    sessions = Sets.newHashSet(session1,session2,session3);
   }
 
   @Test
@@ -60,5 +74,23 @@ public class StreamTest {
     users.stream().filter(user -> user.getGender().equals(0))
         .peek(user -> System.out.println("Filtered values: "+user.getName()))
         .collect(Collectors.toList());
+  }
+
+  @Test
+  public void min(){
+    LocalDate startDate = sessions.stream().min(GroupSessionDto::compareTo)
+        .map(session -> session.getDate()).orElse(LocalDate.now());
+
+    MatcherAssert.assertThat(startDate, is(LocalDate.of(2019,1,29)));
+  }
+
+  @Test
+  public void max(){
+    LocalDate startDate = sessions.stream().max(GroupSessionDto::compareTo)
+        .map(session -> session.getDate()).orElse(LocalDate.now());
+
+    System.out.println(sessions);
+
+    MatcherAssert.assertThat(startDate, is(LocalDate.of(2019,1,31)));
   }
 }
