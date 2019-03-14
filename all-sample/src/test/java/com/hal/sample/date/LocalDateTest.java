@@ -19,9 +19,7 @@ public class LocalDateTest {
   @Test
   public void formatter(){
     LocalDateTime dateTime =  now.atStartOfDay();
-
     System.out.println(dateTime);
-
 //    MatcherAssert.assertThat(dateTime, Matchers.is("2019-01"));
   }
 
