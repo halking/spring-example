@@ -1,11 +1,17 @@
 package com.hal.sample.sql;
 
+import static com.hal.sample.enums.SystemGroupEnum.Other;
+import static com.hal.sample.enums.SystemGroupEnum.TOP70;
+import static org.apache.commons.lang3.StringUtils.equalsIgnoreCase;
+
+import com.google.common.collect.Maps;
 import com.hal.sample.common.Constant;
 import com.hal.sample.enums.Segment;
 import com.hal.sample.enums.SystemGroupEnum;
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;
@@ -35,7 +41,7 @@ public class SqlTest {
   @Test
   public void generateCustomerSql() {
     StringBuilder builder = new StringBuilder();
-    for (int i = 1; i <= 200; i++) {
+    for (int i = 1; i <= 100; i++) {
       builder.append("(");
       builder.append(i).append(",");
 
@@ -49,10 +55,10 @@ public class SqlTest {
         builder.append("'").append(i).append("_mobile").append("'").append(",");
       }
 
-      builder.append("'").append(Segment.randomValue().name()).append("'").append(",");
+      builder.append("'").append(Segment.randomValue().name()).append("'").append("),");
 
-      builder.append("'").append(randomYear()).append("'").append(",");
-      builder.append("'").append(randomMonthDay()).append("'").append("),");
+//      builder.append("'").append(randomYear()).append("'").append(",");
+//      builder.append("'").append(randomMonthDay()).append("'").append("),");
 
       builder.append("\n");
     }
@@ -64,14 +70,24 @@ public class SqlTest {
   public void generateRelSql() {
     StringBuilder builder = new StringBuilder();
     int k = 0;
-    for (int j = 1; j <= 4; j++) {
-      for (int i = 1; i <= 200; i++) {
+    Map<Integer, String> typeMap = Maps.newHashMap();
+    Map<Integer, Integer> refMap = Maps.newHashMap();
+    for (int j = 1; j <= 3; j++) {
+      for (int i = 1; i <= 100; i++) {
         builder.append("(");
         builder.append(++k).append(",");
         builder.append(i).append(",");
         builder.append(j).append(",");
 
         SystemGroupEnum group = SystemGroupEnum.randomValue();
+        if (equalsIgnoreCase(typeMap.get(i), TOP70.name())) {
+          group = Other;
+        }
+        if (refMap.get(i) != null && refMap.get(i).equals(1) &&
+            (equalsIgnoreCase(typeMap.get(i), TOP70.name()) || equalsIgnoreCase(group.name(), TOP70.name()))) {
+          group = Other;
+        }
+
         builder.append("'").append(group.name()).append("'").append(",");
         builder.append(1).append(",");
 
@@ -94,9 +110,14 @@ public class SqlTest {
             if (i % 2 == 0) {
               reference = 1;
             }
+            if (refMap.get(i) != null && refMap.get(i).equals(1)) {
+              reference = 0;
+            }
+
             if (reference == 0) {
               sales = 1;
             }
+
             builder.append(reference).append(",").append(chat).append(",")
                 .append(bound).append(",").append(sales).append(",");
             break;
@@ -108,6 +129,9 @@ public class SqlTest {
           case Opportunities:
             if (i % 2 == 0) {
               reference = 1;
+            }
+            if (refMap.get(i) != null && refMap.get(i).equals(1)) {
+              reference = 0;
             }
             if (reference == 0) {
               sales = 1;
@@ -123,10 +147,16 @@ public class SqlTest {
           default:
             break;
         }
-        if (200<k && k<=302) {
+        if (reference == 1) {
+          refMap.merge(i, reference, (oldV, newV) -> oldV);
+        }
+        if (group.name().equals(TOP70.name())) {
+          typeMap.merge(i, group.name(), (oldV, newV) -> oldV);
+        }
+        if (200 < k && k <= 302) {
           String randomStr = RandomStringUtils.randomAlphanumeric(10);
           builder.append("'").append(randomStr).append("'");
-        }else {
+        } else {
           builder.append((String) null);
         }
         builder.append("),");

@@ -1,4 +1,4 @@
-package com.hal.sample.entity;
+package com.hal.sample.dto;
 
 import com.google.common.base.Objects;
 import java.time.LocalDate;

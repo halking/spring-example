@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.is;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.hal.sample.entity.GroupSessionDto;
+import com.hal.sample.dto.GroupSessionDto;
 import com.hal.sample.entity.User;
 import com.hal.sample.enums.SourceType;
 import java.time.LocalDate;
@@ -47,13 +47,16 @@ public class StreamTest {
     users = Lists.newArrayList(user1,user2,user3,user4,user5);
 
     GroupSessionDto session1 = GroupSessionDto.builder().date(
-        LocalDate.of(2019,1,30)).build();
+        LocalDate.of(2019,1,30)).boutiqueId("car").build();
     GroupSessionDto session2 = GroupSessionDto.builder().date(
-        LocalDate.of(2019,1,29)).build();
+        LocalDate.of(2019,1,29)).boutiqueId("car").build();
     GroupSessionDto session3 = GroupSessionDto.builder().date(
-        LocalDate.of(2019,1,31)).build();
+        LocalDate.of(2019,1,31)).boutiqueId("car").build();
+    GroupSessionDto session4 = GroupSessionDto.builder().date(
+        LocalDate.of(2019,1,28)).boutiqueId("car_1").build();
 
-    sessions = Sets.newHashSet(session1,session2,session3);
+
+    sessions = Sets.newHashSet(session1,session2,session3,session4);
   }
 
   @Test
