@@ -26,4 +26,15 @@ public class BigDecimalTest {
   public void init(){
     System.out.println(BigDecimal.ZERO.setScale(2));
   }
+
+
+  @Test
+  public void add(){
+    BigDecimal zero = BigDecimal.ZERO;
+    BigDecimal result = zero.add(new BigDecimal(20));
+
+    System.out.println(zero);
+    System.out.println(result);
+    System.out.println(new BigDecimal(20).setScale(2));
+  }
 }
