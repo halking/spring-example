@@ -3,6 +3,7 @@ package com.hal.sample.util;
 import static com.google.common.collect.Lists.newArrayList;
 import static org.apache.commons.lang3.StringUtils.endsWith;
 import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.substringBefore;
 
 import com.google.common.collect.Lists;
@@ -129,7 +130,7 @@ public class ExcelUtil {
       //iterate the row in sheet
       for (int j = 1; j <= sheet.getLastRowNum(); j++) {
         Row row = sheet.getRow(j);
-        if (row == null) {
+        if (checkRowIsEmpty(row)) {
           continue;
         }
         //iterate column in the row
@@ -142,7 +143,7 @@ public class ExcelUtil {
 
           Cell cell = row.getCell(y);
           String value = dealCellType(getCellValue(cell));
-          if (isBlank(value)){
+          if (isBlank(value)) {
             continue;
           }
 
@@ -163,7 +164,7 @@ public class ExcelUtil {
             if (value.length() > 0) {
               field.set(entity, value.charAt(0));
             }
-          } else if (BigDecimal.class == fieldType){
+          } else if (BigDecimal.class == fieldType) {
             field.set(entity, new BigDecimal(value));
           }
         }
@@ -171,6 +172,22 @@ public class ExcelUtil {
       }
     }
     return resultList;
+  }
+
+  private static boolean checkRowIsEmpty(Row row) {
+    if (row == null) {
+      return true;
+    }
+    if (row.getLastCellNum() <= 0) {
+      return true;
+    }
+    for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
+      Cell cell = row.getCell(cellNum);
+      if (cell != null && cell.getCellType() != CellType.BLANK && isNotBlank(cell.toString())) {
+        return false;
+      }
+    }
+    return true;
   }
 
 
@@ -279,7 +296,7 @@ public class ExcelUtil {
   }
 
   public static String dealCellType(Object object) {
-    if (object == null){
+    if (object == null) {
       return null;
     }
     String str = String.valueOf(object);

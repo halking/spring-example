@@ -103,4 +103,37 @@ public class StringTest {
     System.out.println(StringUtils.capitalize(str));
   }
 
+  @Test
+  public void testNull(){
+    String a = null;
+
+    if (StringUtils.isNotBlank(null) && a.indexOf("/") < 0){
+      System.out.println("aa");
+    }
+  }
+
+  @Test
+  public void testLine(){
+    String value = "雅诗兰黛\n唇膏两件组";
+
+    System.out.println(StringUtils.chomp(value));
+  }
+
+  @Test
+  public void testEscape(){
+    String value = "adad\\";
+    System.out.println(value);
+    String old = value.replaceAll("\\\\","\\\\\\\\");
+    System.out.println(old);
+  }
+
+  @Test
+  public void testColon(){
+    String value = "adad'";
+    System.out.println(value);
+    value = StringUtils.isBlank(value) ? null : value.replaceAll("'","\\\\'");
+    System.out.println(value);
+
+  }
+
 }

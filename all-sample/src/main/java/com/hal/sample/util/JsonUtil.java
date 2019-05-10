@@ -39,7 +39,7 @@ public class JsonUtil {
   }
 
   /**
-   * Json to object.
+   * Json to.txt object.
    *
    * @param <T> the generic type
    * @param json the json
@@ -56,7 +56,7 @@ public class JsonUtil {
 
 
   /**
-   * Json to object.
+   * Json to.txt object.
    *
    * @param <T> the generic type
    * @param json the jsonNode
@@ -73,7 +73,7 @@ public class JsonUtil {
   }
 
   /**
-   * Convert Json to the list of Object
+   * Convert Json to.txt the list of Object
    *
    * @param <T> the generic type
    * @param json the json
@@ -93,7 +93,7 @@ public class JsonUtil {
   }
 
   /**
-   * Object to json.
+   * Object to.txt json.
    *
    * @param <T> the generic type
    * @param object the object
@@ -109,7 +109,7 @@ public class JsonUtil {
   }
 
   /**
-   * String to JsonNode
+   * String to.txt JsonNode
    *
    * @param jsonStr the String
    * @return JsonNode
@@ -125,7 +125,7 @@ public class JsonUtil {
 
 
   /**
-   * Object to json with subTypes registration.
+   * Object to.txt json with subTypes registration.
    *
    * @param <T> the generic type
    * @param object the object

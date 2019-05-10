@@ -30,7 +30,7 @@ public class OptionalTest {
   @Test
   public void ifPresent() {
     Optional<String> optional = Optional.of("test");
-    optional.ifPresent((value) -> { throw new RuntimeException("testCode");});
+    optional.ifPresent(value -> { return;});
 
     System.out.println("exception after");
 //    assertThat(optional.isPresent(),Matchers.is(true));
