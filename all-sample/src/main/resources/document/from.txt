@@ -1,0 +1,2 @@
+from file;
+this a from file
