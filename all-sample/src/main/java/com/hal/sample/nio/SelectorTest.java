@@ -23,7 +23,7 @@ public class SelectorTest {
     //new Selector
     Selector selector = Selector.open();
     //open SocketChannel
-    SocketChannel channel = SocketChannel.open(new InetSocketAddress("http://localhost", 80));
+    SocketChannel channel = SocketChannel.open(new InetSocketAddress("localhost", 8090));
     //Register Channel
     channel.configureBlocking(false);
     channel.register(selector, SelectionKey.OP_READ);
