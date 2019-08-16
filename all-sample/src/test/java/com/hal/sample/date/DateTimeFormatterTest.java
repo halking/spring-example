@@ -2,8 +2,6 @@ package com.hal.sample.date;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +25,9 @@ public class DateTimeFormatterTest {
   @Test
   public void formatter(){
     String date = now.format(DateTimeFormatter.ofPattern("dd/MM"));
+    System.out.println(now.format(DateTimeFormatter.ofPattern("mmss")));
+//    MatcherAssert.assertThat(date, Matchers.is("29/05"));
 
-    MatcherAssert.assertThat(date, Matchers.is("10/01"));
+    System.out.println();
   }
 }

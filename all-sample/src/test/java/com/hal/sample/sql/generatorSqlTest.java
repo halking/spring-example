@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,7 +49,7 @@ public class generatorSqlTest {
 
   private static String KPI_TARGET_SQL = "D:\\work\\warm\\inti_data\\sql\\init_kpi_target.sql";
 
-  private static String BRAND_GIFT_SQL = "D:\\work\\warm\\inti_data\\20190505\\init_brand_gift_20190505.sql";
+  private static String BRAND_GIFT_SQL = "D:\\work\\warm\\support\\stock\\20190717\\insert_brand_gift_20190717.sql";
 
   private static String BOUTIQUE_BUDGET_SQL = "D:\\work\\warm\\inti_data\\init_boutique_budget_fiscalyear2020.sql";
 
@@ -58,32 +59,34 @@ public class generatorSqlTest {
 
   private static String LINE = "\n\n";
 
-  private static Map<String,String> staffMap = Maps.newHashMap();
+  private static Map<String, String> staffMap = Maps.newHashMap();
 
   @Before
-  public void init(){
-    staffMap.put("MICHAEL LI","03813");
-    staffMap.put("MONICA SHEN","03817");
-    staffMap.put("VIVI GUO","05172");
-    staffMap.put("CINDY QIN","00302");
-    staffMap.put("MARIO FAN","05200");
+  public void init() {
+    staffMap.put("MICHAEL LI", "03813");
+    staffMap.put("MONICA SHEN", "03817");
+    staffMap.put("VIVI GUO", "05172");
+    staffMap.put("CINDY QIN", "00302");
+    staffMap.put("MARIO FAN", "05200");
   }
 
   @Test
   public void init_brandGift() throws Exception {
-    Resource resource1 = resourceLoader.getResource("classpath:document/upload_brand_gift_template.xlsx");
-    Resource resource2 = resourceLoader.getResource("classpath:document/upload_brand_gift_template_20190505.xlsx");
+    String path = "file:D:\\work\\warm\\support\\stock\\20190716\\brand_gift_template_20190717.xlsx";
+    Resource resource1 = resourceLoader.getResource(path);
+//    Resource resource2 = resourceLoader.getResource("classpath:document/upload_brand_gift_template_20190515.xlsx");
 
     List<BrandGiftDto> brandGiftList = ExcelUtil.parseToObject(resource1.getInputStream(),
         resource1.getFilename(), BrandGiftDto.class);
 
-    Map<String,BrandGiftDto> map = Maps.newLinkedHashMap();
+    Map<String, BrandGiftDto> map = Maps.newLinkedHashMap();
 
     for (BrandGiftDto brandGiftDto : brandGiftList) {
-      String key = brandGiftDto.getCode().trim()+":"+brandGiftDto.getBoutiqueCode().trim();
-      map.merge(key,brandGiftDto,(oldV, newV) -> newV);
+      String key = brandGiftDto.getCode().trim() + ":" + brandGiftDto.getBoutiqueCode().trim();
+      map.merge(key, brandGiftDto, (oldV, newV) -> newV);
     }
 
+/*
     List<BrandGiftDto> brandGiftList2 = ExcelUtil.parseToObject(resource2.getInputStream(),
         resource2.getFilename(), BrandGiftDto.class);
 
@@ -91,12 +94,14 @@ public class generatorSqlTest {
       String key = brandGiftDto.getCode().trim()+":"+brandGiftDto.getBoutiqueCode().trim();
       map.merge(key,brandGiftDto,(oldV, newV) -> newV);
     }
+*/
 
-//    for (BrandGiftDto brandGiftDto : brandGiftList) {
-//      System.out.println(CR_URL+brandGiftDto.getCode()+".PNG");
-//    }
+    for (BrandGiftDto brandGiftDto : brandGiftList) {
+//      System.out.println(CR_URL + brandGiftDto.getCode() + ".PNG");
+      System.out.println(StringUtils.leftPad(brandGiftDto.getBoutiqueCode(),4, "0"));
+    }
 
-    genBrandGiftSql(map.values());
+//    genBrandGiftSql(map.values());
 
   }
 
@@ -128,7 +133,7 @@ public class generatorSqlTest {
           .append(brandGiftDto.getInboundStock()).append(",")
           .append(brandGiftDto.getInboundStock()).append(",")
           .append("0,0,")
-          .append("'").append(brandGiftDto.getImageUrl()).append("'")
+          .append("'").append(CR_URL + brandGiftDto.getCode() + ".PNG").append("'")
           .append(");");
       builder.append("\n");
       FileUtils.writeByteArrayToFile(file, builder.toString().getBytes(), true);
@@ -167,7 +172,6 @@ public class generatorSqlTest {
     Resource resource = resourceLoader.getResource("classpath:document/upload_top70_template_20190508.xlsx");
     List<CustomerDto> customers = ExcelUtil.parseToObject(resource.getInputStream(),
         resource.getFilename(), CustomerDto.class);
-
 
     for (CustomerDto customer : customers) {
 //      System.out.println(String.format("%07d", Integer.valueOf(customer.getCdbNumber())));

@@ -7,23 +7,18 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * Created by Steven.HUANG on 2019/1/11.
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+/*@RunWith(SpringRunner.class)
+@SpringBootTest*/
 @Slf4j
 public class ExceptionTest {
 
   private List<User> users;
 
-  @Before
+//  @Before
   public void setup(){
     User user1 = User.builder().name("name1").birthday(LocalDate.now()).gender(1).age(18)
         .sourceType(SourceType.Reference)
@@ -46,7 +41,7 @@ public class ExceptionTest {
     users = Lists.newArrayList(user1,user2,user3,user4,user5,user6);
   }
 
-  @Test
+//  @Test
   public void forException(){
     for (User user : users) {
       try {

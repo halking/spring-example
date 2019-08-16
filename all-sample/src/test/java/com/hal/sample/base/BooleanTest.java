@@ -26,7 +26,7 @@ public class BooleanTest {
     MatcherAssert.assertThat(value, Matchers.is(0));
   }
 
-  @Test
+//  @Test
   public void nullOr(){
     String flag = null;
 

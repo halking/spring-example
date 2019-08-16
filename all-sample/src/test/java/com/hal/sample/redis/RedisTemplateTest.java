@@ -5,20 +5,15 @@ import static com.google.common.collect.Lists.newArrayList;
 import com.hal.sample.entity.Role;
 import com.hal.sample.entity.User;
 import java.util.List;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * Created by Steven.HUANG on 2019/4/8.
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+/*@RunWith(SpringRunner.class)
+@SpringBootTest*/
 public class RedisTemplateTest {
 
   @Autowired
@@ -31,7 +26,7 @@ public class RedisTemplateTest {
 
   private List<Role> roles;
 
-  @Before
+//  @Before
   public void setUp() {
     Role role1 = Role.builder().name("ROLE_A").build();
     Role role2 = Role.builder().name("ROLE_B").build();
@@ -39,7 +34,7 @@ public class RedisTemplateTest {
     user = User.builder().name("test").age(16).roles(roles).build();
   }
 
-  @Test
+//  @Test
   public void stringType() {
     redisTemplate.opsForValue().set("user", user);
     redisTemplate.opsForValue().set("roles", roles);
@@ -50,7 +45,7 @@ public class RedisTemplateTest {
 
   }
 
-  @Test
+//  @Test
   public void isOverWriter(){
     User user = new User();
     redisTemplate.opsForValue().set("test","test1");

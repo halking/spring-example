@@ -3,6 +3,8 @@ package com.hal.sample.base;
 import com.github.promeg.pinyinhelper.Pinyin;
 import com.hal.sample.util.ChineseStringUtil;
 import java.text.MessageFormat;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -134,6 +136,28 @@ public class StringTest {
     value = StringUtils.isBlank(value) ? null : value.replaceAll("'","\\\\'");
     System.out.println(value);
 
+  }
+
+  @Test
+  public void split(){
+    String str = "SLEEPING,SVI,SLI,SLR,SLS,SLA";
+
+    List<String> list = Arrays.asList(StringUtils.split(str,","));
+
+    for (String s : list) {
+      System.out.println(s);
+    }
+  }
+
+  @Test
+  public void newOldTest(){
+    String str = "a";
+
+    List<String> list = Arrays.asList(StringUtils.split(str,","));
+
+    for (String s : list) {
+      System.out.println(s);
+    }
   }
 
 }

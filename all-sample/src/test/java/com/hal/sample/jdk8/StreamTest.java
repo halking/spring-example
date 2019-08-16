@@ -84,7 +84,7 @@ public class StreamTest {
     LocalDate startDate = sessions.stream().min(GroupSessionDto::compareTo)
         .map(session -> session.getDate()).orElse(LocalDate.now());
 
-    MatcherAssert.assertThat(startDate, is(LocalDate.of(2019,1,29)));
+    MatcherAssert.assertThat(startDate, is(LocalDate.of(2019,1,28)));
   }
 
   @Test

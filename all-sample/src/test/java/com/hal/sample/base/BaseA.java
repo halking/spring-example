@@ -3,10 +3,18 @@ package com.hal.sample.base;
 /**
  * Created by Steven.HUANG on 2019/1/25.
  */
-public class BaseA implements Base{
+public class BaseA {
 
-  @Override
-  public void test() {
-    System.out.println("BaseA ....");
+  public BaseA() {
+    System.out.println("HelloA ");
   }
+
+  {
+    System.out.println("I'm A class");
+  }
+
+  static {
+    System.out.println("static A");
+  }
+
 }

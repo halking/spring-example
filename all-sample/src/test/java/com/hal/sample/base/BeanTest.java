@@ -19,7 +19,9 @@ public class BeanTest {
     User oldUser = User.builder().name("huang").age(30).build();
     User newUser = oldUser;
 
+    newUser.setAge(40);
     System.out.println(newUser);
+    System.out.println(oldUser);
     System.out.println(oldUser == newUser);
 
   }
