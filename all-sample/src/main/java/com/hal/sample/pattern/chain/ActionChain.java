@@ -6,4 +6,5 @@ package com.hal.sample.pattern.chain;
  */
 public interface ActionChain {
 
+  void doAction(ActionInBean inBean, ActionOutBean outBean);
 }

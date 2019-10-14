@@ -13,12 +13,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ConsumerTest {
 
-  static void add(int a, Consumer<Integer> consumer){
+  static void add(int a, Consumer<Integer> consumer) {
     consumer.accept(a);
   }
 
   @Test
-  public void accept(){
-    add(10,val-> System.out.println(val+10));
+  public void accept() {
+    add(10, val -> System.out.println(val + 10));
   }
 }

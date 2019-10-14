@@ -27,7 +27,7 @@ public class SelectorTest {
     //Register Channel
     channel.configureBlocking(false);
     channel.register(selector, SelectionKey.OP_READ);
-    
+
     Iterator<SelectionKey> keyIterator = selector.selectedKeys().iterator();
     while (keyIterator.hasNext()) {
       SelectionKey key = keyIterator.next();

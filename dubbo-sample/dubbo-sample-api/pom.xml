@@ -16,5 +16,11 @@
     <module>dubbo-sample-api-consumer</module>
   </modules>
 
-
+  <dependencies>
+    <dependency>
+      <groupId>com.hal.example</groupId>
+      <artifactId>dubbo-sample-interface</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+  </dependencies>
 </project>

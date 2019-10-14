@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CloundConfigClientApplication {
 
-    @Value("${foo}")
-    private String foo;
+  @Value("${foo}")
+  private String foo;
 
-    public static void main(String[] args) {
-        SpringApplication.run(CloundConfigClientApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(CloundConfigClientApplication.class, args);
+  }
 
-    @RequestMapping(value = "/foo")
-    public String getFoo() {
-        return foo;
-    }
+  @RequestMapping(value = "/foo")
+  public String getFoo() {
+    return foo;
+  }
 }

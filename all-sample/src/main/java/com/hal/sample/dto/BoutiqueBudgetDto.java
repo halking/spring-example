@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class BoutiqueBudgetDto {
+
   @ExcelField(title = "boutiqueCode")
   private String boutiqueCode;
 

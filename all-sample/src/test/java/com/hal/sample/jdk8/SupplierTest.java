@@ -20,8 +20,8 @@ public class SupplierTest {
   }
 
   @Test
-  public void get(){
-    int r = add(()->10);
+  public void get() {
+    int r = add(() -> 10);
 
     MatcherAssert.assertThat(r, Matchers.is(10));
   }

@@ -46,13 +46,15 @@ public class LocalDateTest {
   }
 
   @Test
-  public void parseZone(){
+  public void parseZone() {
     String dateStr = "2019-01-02";
     String dateTimeStr = "2019-01-02 00:00:00";
-    String s1 = LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay().toInstant(ZoneOffset.of("+08:00")).toString();
+    String s1 = LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay()
+        .toInstant(ZoneOffset.of("+08:00")).toString();
     System.out.println(s1);
 
-    String s2 = LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay().atZone(ZoneId.of("Asia/Shanghai")).toString();
+    String s2 = LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay()
+        .atZone(ZoneId.of("Asia/Shanghai")).toString();
     System.out.println(s2);
 
 /*    String s3 = ZonedDateTime.parse("2019-01-02").format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
@@ -62,21 +64,22 @@ public class LocalDateTest {
 
     ZoneId zoneId = ZoneId.of("+08:00");
 
-    LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-    String s4 = ZonedDateTime.of(dateTime,zoneId).toString();
+    LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    String s4 = ZonedDateTime.of(dateTime, zoneId).toString();
     System.out.println(s4);
 
     String s5 = LocalDate.parse(dateStr).atStartOfDay().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
     System.out.println(s5);
-    System.out.println(LocalDate.now().atStartOfDay(zoneId).format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX")));
+    System.out
+        .println(LocalDate.now().atStartOfDay(zoneId).format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX")));
 
-    String s6 = LocalDateTime.of(LocalDate.parse(dateStr), LocalTime.of(0,0,0)).atZone(zoneId).toString();
+    String s6 = LocalDateTime.of(LocalDate.parse(dateStr), LocalTime.of(0, 0, 0)).atZone(zoneId).toString();
     System.out.println(s6);
 
   }
 
   @Test
-  public void getTime(){
+  public void getTime() {
     System.out.println(new Date().getTime());
   }
 

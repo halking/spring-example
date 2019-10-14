@@ -31,5 +31,6 @@ public class RandomTest {
     System.out.println(RandomStringUtils.randomAlphanumeric(8));
     System.out.println(RandomStringUtils.randomAlphanumeric(5, 15));
     System.out.println(RandomStringUtils.randomNumeric(15, 20));
+    System.out.println(RandomStringUtils.randomAlphabetic(32));
   }
 }

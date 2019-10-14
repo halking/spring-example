@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @EnableScheduling
 @ConditionalOnProperty("scheduler.reminder-delete.enabled")
 @DisallowConcurrentExecution
-public class ClusterTestScheduler implements BaseScheduler{
+public class ClusterTestScheduler implements BaseScheduler {
 
   @Autowired
   private ServerProperties serverProperties;

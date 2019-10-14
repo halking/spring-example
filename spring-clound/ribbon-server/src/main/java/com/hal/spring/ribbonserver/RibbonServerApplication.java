@@ -15,15 +15,15 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrix
 public class RibbonServerApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(RibbonServerApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(RibbonServerApplication.class, args);
+  }
 
-    @Bean
-    @LoadBalanced
-    RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+  @Bean
+  @LoadBalanced
+  RestTemplate restTemplate() {
+    return new RestTemplate();
+  }
 }
 
 

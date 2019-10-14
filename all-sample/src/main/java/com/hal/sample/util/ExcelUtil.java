@@ -50,7 +50,7 @@ public class ExcelUtil {
     Object object = "";
     try {
       if (cell == null || (cell.getCellType() == CellType.STRING &&
-        isBlank(cell.getStringCellValue()))) {
+          isBlank(cell.getStringCellValue()))) {
         return null;
       }
       CellType cellType = cell.getCellType();
@@ -113,7 +113,7 @@ public class ExcelUtil {
   }
 
   public static <E> List<E> parseToObject(InputStream in, String fileName, Class<E> clazz)
-    throws Exception {
+      throws Exception {
 
     Workbook wb = getWorkbook(in, fileName);
 
@@ -231,7 +231,7 @@ public class ExcelUtil {
       }
     }
     if (clazz.getSuperclass() != null
-      && !clazz.getSuperclass().equals(Object.class)) {
+        && !clazz.getSuperclass().equals(Object.class)) {
       getMappedFiled(clazz.getSuperclass(), fields);
     }
 
@@ -252,7 +252,7 @@ public class ExcelUtil {
   }
 
   public static void buildContent(OutputStream outputStream, String sheetName,
-    Collection<String> heads, Consumer<Sheet> consumer) throws Exception {
+      Collection<String> heads, Consumer<Sheet> consumer) throws Exception {
     Workbook workbook = new XSSFWorkbook();
     Sheet sheet = workbook.createSheet(sheetName);
     int rowIndex = 0;
@@ -268,8 +268,8 @@ public class ExcelUtil {
   }
 
   public static <T> void buildContent(OutputStream outputStream,
-    String sheetName, Map<String, String> heads, Collection<T> datum)
-    throws Exception {
+      String sheetName, Map<String, String> heads, Collection<T> datum)
+      throws Exception {
     buildContent(outputStream, sheetName, heads.values(), sheet -> {
       try {
         Iterator<T> iterator = datum.iterator();

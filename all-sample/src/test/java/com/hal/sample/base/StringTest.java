@@ -38,7 +38,7 @@ public class StringTest {
   @Test
   public void subString() {
     String value = "testabc";
-
+    System.out.println("s".startsWith("S"));
     MatcherAssert.assertThat(value.substring(value.length() - 3), Matchers.is("abc"));
   }
 
@@ -54,7 +54,8 @@ public class StringTest {
 
   @Test
   public void format() {
-    System.out.println(MessageFormat.format("test {0}", 1));
+    System.out.println(
+        MessageFormat.format("test {0} {1}", 1, "a"));
   }
 
   @Test
@@ -76,73 +77,73 @@ public class StringTest {
     System.out.println("Alphanumeric :" + str1);
 
     String str2 = RandomStringUtils.randomAlphabetic(10);
-    System.out.println("Alphabetic:"+str2);
+    System.out.println("Alphabetic:" + str2);
 
     int length = 10;
     boolean useLetters = true;
     boolean useNumbers = false;
     String str3 = RandomStringUtils.random(length, useLetters, useNumbers);
-    System.out.println("Bounded Random:"+str3);
+    System.out.println("Bounded Random:" + str3);
 
   }
 
   @Test
   public void getRandomChinese() {
-    String chineseStr = new String(new char[] { (char) (new Random().nextInt(20902) + 19968) });
+    String chineseStr = new String(new char[]{(char) (new Random().nextInt(20902) + 19968)});
     System.out.println(chineseStr);
 
     System.out.println(ChineseStringUtil.getChinese());
     System.out.println(ChineseStringUtil.getFixedLengthChinese(2));
-    System.out.println(ChineseStringUtil.getRandomLengthChiness(1,6));
+    System.out.println(ChineseStringUtil.getRandomLengthChiness(1, 6));
   }
 
   @Test
   public void tinyPinYinTest() {
     String chineseStr = "黄胜";
 
-    String str = Pinyin.toPinyin(chineseStr," ").toLowerCase();
+    String str = Pinyin.toPinyin(chineseStr, " ").toLowerCase();
 
     System.out.println(StringUtils.capitalize(str));
   }
 
   @Test
-  public void testNull(){
+  public void testNull() {
     String a = null;
 
-    if (StringUtils.isNotBlank(null) && a.indexOf("/") < 0){
+    if (StringUtils.isNotBlank(null) && a.indexOf("/") < 0) {
       System.out.println("aa");
     }
   }
 
   @Test
-  public void testLine(){
+  public void testLine() {
     String value = "雅诗兰黛\n唇膏两件组";
 
     System.out.println(StringUtils.chomp(value));
   }
 
   @Test
-  public void testEscape(){
+  public void testEscape() {
     String value = "adad\\";
     System.out.println(value);
-    String old = value.replaceAll("\\\\","\\\\\\\\");
+    String old = value.replaceAll("\\\\", "\\\\\\\\");
     System.out.println(old);
   }
 
   @Test
-  public void testColon(){
+  public void testColon() {
     String value = "adad'";
     System.out.println(value);
-    value = StringUtils.isBlank(value) ? null : value.replaceAll("'","\\\\'");
+    value = StringUtils.isBlank(value) ? null : value.replaceAll("'", "\\\\'");
     System.out.println(value);
 
   }
 
   @Test
-  public void split(){
+  public void split() {
     String str = "SLEEPING,SVI,SLI,SLR,SLS,SLA";
 
-    List<String> list = Arrays.asList(StringUtils.split(str,","));
+    List<String> list = Arrays.asList(StringUtils.split(str, ","));
 
     for (String s : list) {
       System.out.println(s);
@@ -150,14 +151,34 @@ public class StringTest {
   }
 
   @Test
-  public void newOldTest(){
+  public void newOldTest() {
     String str = "a";
 
-    List<String> list = Arrays.asList(StringUtils.split(str,","));
+    List<String> list = Arrays.asList(StringUtils.split(str, ","));
 
     for (String s : list) {
       System.out.println(s);
     }
+  }
+
+  @Test
+  public void abbreviate() {
+    String str = "大海度假会教大家大家";
+    System.out.println(StringUtils.abbreviate(str, 9));
+
+    String str1 = "大海度假会; 教大家dada大家";
+    System.out.println(StringUtils.abbreviate(str1, 15));
+
+    String str2 = "大海度,达到23huAd哈哈";
+    System.out.println(StringUtils.abbreviate(str2, 13));
+
+  }
+
+  @Test
+  public void remove() {
+    String str = "大海度假\n会教大家\n大家\n";
+    System.out.println(str);
+    System.out.println(StringUtils.removeEndIgnoreCase(str, "\n"));
   }
 
 }

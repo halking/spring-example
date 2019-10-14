@@ -8,6 +8,7 @@ import java.util.Random;
  * Created by Steven.HUANG on 2019/3/7.
  */
 public class ChineseStringUtil {
+
   private static Random random = null;
 
   private static Random getRandomInstance() {

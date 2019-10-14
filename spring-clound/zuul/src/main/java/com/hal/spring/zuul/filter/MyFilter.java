@@ -15,41 +15,41 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class MyFilter extends ZuulFilter {
 
-    private static Logger log = LoggerFactory.getLogger(MyFilter.class);
+  private static Logger log = LoggerFactory.getLogger(MyFilter.class);
 
-    @Override
-    public String filterType() {
-        return "pre";
+  @Override
+  public String filterType() {
+    return "pre";
+  }
+
+  @Override
+  public int filterOrder() {
+    return 0;
+  }
+
+  @Override
+  public boolean shouldFilter() {
+    return true;
+  }
+
+  @Override
+  public Object run() throws ZuulException {
+    RequestContext requestContext = RequestContext.getCurrentContext();
+    HttpServletRequest request = requestContext.getRequest();
+    log.info(String.format("%s >>> %s", request.getMethod(), request.getRequestURL().toString()));
+    Object accessToken = request.getParameter("token");
+    if (accessToken == null) {
+      log.warn("token is empty");
+      requestContext.setSendZuulResponse(false);
+      requestContext.setResponseStatusCode(401);
+      try {
+        requestContext.getResponse().getWriter().write("token is empty");
+      } catch (Exception e) {
+      }
+
+      return null;
     }
-
-    @Override
-    public int filterOrder() {
-        return 0;
-    }
-
-    @Override
-    public boolean shouldFilter() {
-        return true;
-    }
-
-    @Override
-    public Object run() throws ZuulException {
-        RequestContext requestContext = RequestContext.getCurrentContext();
-        HttpServletRequest request = requestContext.getRequest();
-        log.info(String.format("%s >>> %s", request.getMethod(), request.getRequestURL().toString()));
-        Object accessToken = request.getParameter("token");
-        if (accessToken == null) {
-            log.warn("token is empty");
-            requestContext.setSendZuulResponse(false);
-            requestContext.setResponseStatusCode(401);
-            try {
-                requestContext.getResponse().getWriter().write("token is empty");
-            } catch (Exception e) {
-            }
-
-            return null;
-        }
-        log.info("ok");
-        return null;
-    }
+    log.info("ok");
+    return null;
+  }
 }

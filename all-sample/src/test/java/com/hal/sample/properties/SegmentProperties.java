@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class SegmentProperties {
 
-  private Map<String,SegmentInfo> details = new HashMap<>();
+  private Map<String, SegmentInfo> details = new HashMap<>();
 
   @Data
   public static class SegmentInfo {

@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class BooleanTest {
 
   @Test
-  public void valueOf(){
+  public void valueOf() {
     Boolean flag = null;
 
     Integer value = flag != null && flag ? 1 : 0;
@@ -26,38 +26,39 @@ public class BooleanTest {
     MatcherAssert.assertThat(value, Matchers.is(0));
   }
 
-//  @Test
-  public void nullOr(){
+  //  @Test
+  public void nullOr() {
     String flag = null;
 
-    if (flag == null || flag.equals("a")){
+    if (flag == null || flag.equals("a")) {
       System.out.println("null or");
     }
 
-    if (flag.equals("a") || flag == null){
+    if (flag.equals("a") || flag == null) {
       System.out.println("null or");
     }
 
   }
 
   @Test
-  public void booleanNull(){
+  public void booleanNull() {
     Boolean flag = null;
 
-    if (flag != null && flag){
+    if (flag != null && flag) {
 
     }
 
     LocalDateTime s = null;
 
-    System.out.println(s!= null);
+    System.out.println(s != null);
 
-    if (s != null){}
+    if (s != null) {
+    }
 
   }
 
   @Test
-  public void testTernary(){
+  public void testTernary() {
     Boolean flag1 = null;
     Integer i1 = flag1 != null ? flag1 ? 1 : 2 : 0;
     System.out.println(i1);

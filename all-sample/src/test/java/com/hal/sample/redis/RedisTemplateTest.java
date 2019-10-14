@@ -26,7 +26,7 @@ public class RedisTemplateTest {
 
   private List<Role> roles;
 
-//  @Before
+  //  @Before
   public void setUp() {
     Role role1 = Role.builder().name("ROLE_A").build();
     Role role2 = Role.builder().name("ROLE_B").build();
@@ -34,7 +34,7 @@ public class RedisTemplateTest {
     user = User.builder().name("test").age(16).roles(roles).build();
   }
 
-//  @Test
+  //  @Test
   public void stringType() {
     redisTemplate.opsForValue().set("user", user);
     redisTemplate.opsForValue().set("roles", roles);
@@ -45,11 +45,11 @@ public class RedisTemplateTest {
 
   }
 
-//  @Test
-  public void isOverWriter(){
+  //  @Test
+  public void isOverWriter() {
     User user = new User();
-    redisTemplate.opsForValue().set("test","test1");
-    redisTemplate.opsForValue().set("test","test2");
+    redisTemplate.opsForValue().set("test", "test1");
+    redisTemplate.opsForValue().set("test", "test2");
     System.out.println(redisTemplate.opsForValue().get("test"));
     System.out.println(redisTemplate.opsForValue().get("dkt:video:category:Basketball"));
   }

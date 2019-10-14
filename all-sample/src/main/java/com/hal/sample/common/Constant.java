@@ -15,6 +15,8 @@ public interface Constant {
 
   String STATUS_UNBOUND = "UnBound";
 
+  String YYYYMMDD = "yyyyMMdd";
+
   String SESSION_STRICT_HOST_KEY_CHECKING = "StrictHostKeyChecking";
 
 }

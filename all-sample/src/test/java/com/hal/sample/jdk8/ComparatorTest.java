@@ -18,10 +18,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ComparatorTest {
 
   @Test
-  public void dateSort(){
-    List<LocalDate> dateList = Lists.newArrayList(LocalDate.of(2019,4,1),
-        LocalDate.of(2019,3,29),LocalDate.of(2019,3,27),
-        LocalDate.of(2019,3,27));
+  public void dateSort() {
+    List<LocalDate> dateList = Lists.newArrayList(LocalDate.of(2019, 4, 1),
+        LocalDate.of(2019, 3, 29), LocalDate.of(2019, 3, 27),
+        LocalDate.of(2019, 3, 27));
 
     System.out.println(dateList.stream().distinct().sorted(Comparator.naturalOrder()).collect(
         Collectors.toList()));

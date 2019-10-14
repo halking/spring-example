@@ -10,7 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @RefreshScope
 public class CloundServiceClientApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(CloundServiceClientApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(CloundServiceClientApplication.class, args);
+  }
 }

@@ -45,17 +45,17 @@ public class HashMapTest {
   }
 
   @Test
-  public void put(){
+  public void put() {
     Map<String, String> mapPut = new HashMap<>();
-    mapPut.put("a","a");
+    mapPut.put("a", "a");
 
-    mapPut.put("a","b");
+    mapPut.put("a", "b");
     System.out.println();
 
     mapPut.values();
     Set<String> keys = mapPut.keySet();
     for (String key : keys) {
-      
+
     }
   }
 }

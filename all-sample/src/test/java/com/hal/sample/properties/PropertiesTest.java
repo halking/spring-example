@@ -33,7 +33,7 @@ public class PropertiesTest {
     Map<String, SegmentInfo> details = PropertiesHelp.getProperties().getDetails();
 
     Map<String, String> result = details.entrySet().stream()
-        .collect(Collectors.toMap(Entry::getKey, PropertiesTest::apply,(ov, nv) -> ov));
+        .collect(Collectors.toMap(Entry::getKey, PropertiesTest::apply, (ov, nv) -> ov));
 
     System.out.println(result);
   }

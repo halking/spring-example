@@ -18,7 +18,7 @@ public class DoubleTest {
 
 
   @Test
-  public void baseTest(){
+  public void baseTest() {
     Double value = Double.valueOf(20);
     MatcherAssert.assertThat(value, Matchers.is(20.0));
 

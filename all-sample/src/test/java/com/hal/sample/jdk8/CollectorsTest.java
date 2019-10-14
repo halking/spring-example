@@ -23,7 +23,7 @@ public class CollectorsTest {
   private List<User> users;
 
   @Before
-  public void setup(){
+  public void setup() {
     User user1 = User.builder().name("name1").birthday(LocalDate.now()).gender(1).age(18)
         .sourceType(SourceType.Reference).build();
     User user2 = User.builder().name("name2").birthday(LocalDate.now()).gender(0).age(22)
@@ -37,43 +37,43 @@ public class CollectorsTest {
     User user6 = User.builder().name("name6").birthday(LocalDate.now()).gender(0).age(20)
         .sourceType(SourceType.Chat).build();
 
-    users = Lists.newArrayList(user1,user2,user3,user4,user5,user6);
+    users = Lists.newArrayList(user1, user2, user3, user4, user5, user6);
   }
 
   @Test
-  public void groupingBy(){
-    Map<SourceType,List<User>> map = users.stream().collect(Collectors.groupingBy(
-        user-> user.getSourceType(),Collectors.toList()));
+  public void groupingBy() {
+    Map<SourceType, List<User>> map = users.stream().collect(Collectors.groupingBy(
+        user -> user.getSourceType(), Collectors.toList()));
     System.out.println(map);
   }
 
   @Test
-  public void partitioning(){
+  public void partitioning() {
 
   }
 
   @Test
-  public void mapMerger(){
+  public void mapMerger() {
 
   }
 
   @Test
-  public void reducing(){
+  public void reducing() {
 
   }
 
   @Test
-  public void mapping(){
+  public void mapping() {
 
   }
 
   @Test
-  public void summarizing(){
+  public void summarizing() {
 
   }
 
   @Test
-  public void averaging(){
+  public void averaging() {
 
   }
 

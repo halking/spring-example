@@ -19,18 +19,18 @@ public class ReflectionTest {
   private User user;
 
   @Test
-  public void field(){
+  public void field() {
     Class clazz = new User().getClass();
     Field[] fields = clazz.getDeclaredFields();
     for (Field field : fields) {
       String fieldName = field.getName();
       System.out.println(fieldName);
-      Method method = ReflectionUtils.findMethod(clazz,fieldName);
+      Method method = ReflectionUtils.findMethod(clazz, fieldName);
     }
   }
 
   @Test
-  public void method(){
+  public void method() {
 
   }
 }

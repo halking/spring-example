@@ -53,7 +53,7 @@ public class JschUtil {
       }
 
       log.info("Try to connect sftp host {}, username {}, privateKey {}, passphrase {}", serverInfo.getHost(),
-        serverInfo.getUsername(), serverInfo.getPrivateKey(), serverInfo.getPassphrase());
+          serverInfo.getUsername(), serverInfo.getPrivateKey(), serverInfo.getPassphrase());
 
       Session session = createSession(jsch, serverInfo);
       session.connect(serverInfo.getSessionTimeout());

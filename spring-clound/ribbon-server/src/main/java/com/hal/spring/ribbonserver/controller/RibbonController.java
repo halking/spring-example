@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RibbonController {
 
-    @Autowired
-    RibbonTestService ribbonTestService;
+  @Autowired
+  RibbonTestService ribbonTestService;
 
-    @GetMapping(value = "/hi")
-    public String hi(@RequestParam String name) {
-        return ribbonTestService.RibbonHome(name);
-    }
+  @GetMapping(value = "/hi")
+  public String hi(@RequestParam String name) {
+    return ribbonTestService.RibbonHome(name);
+  }
 }

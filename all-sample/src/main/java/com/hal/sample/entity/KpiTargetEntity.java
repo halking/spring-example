@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
-public class KpiTargetEntity  {
+public class KpiTargetEntity {
 
   @ExcelField(title = "boutiqueCode")
   private String boutiqueCode;

@@ -98,7 +98,7 @@ public class generatorSqlTest {
 
     for (BrandGiftDto brandGiftDto : brandGiftList) {
 //      System.out.println(CR_URL + brandGiftDto.getCode() + ".PNG");
-      System.out.println(StringUtils.leftPad(brandGiftDto.getBoutiqueCode(),4, "0"));
+      System.out.println(StringUtils.leftPad(brandGiftDto.getBoutiqueCode(), 4, "0"));
     }
 
 //    genBrandGiftSql(map.values());

@@ -12,7 +12,7 @@ public class PropertiesHelp {
   private static SegmentProperties properties;
 
   @Autowired
-  public PropertiesHelp(SegmentProperties properties){
+  public PropertiesHelp(SegmentProperties properties) {
     PropertiesHelp.properties = properties;
   }
 

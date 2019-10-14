@@ -15,7 +15,7 @@ public class BeanTest {
 
 
   @Test
-  public void beanCopy(){
+  public void beanCopy() {
     User oldUser = User.builder().name("huang").age(30).build();
     User newUser = oldUser;
 

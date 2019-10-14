@@ -11,7 +11,9 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-/** Created by Steven.HUANG on 2018/12/12. */
+/**
+ * Created by Steven.HUANG on 2018/12/12.
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OptionalTest {
@@ -19,9 +21,9 @@ public class OptionalTest {
   private Optional<User> optionalUser;
 
   @Before
-  public void setup(){
+  public void setup() {
     User user = User.builder().name("name").birthday(LocalDate.now()).gender(1).age(22).build();
-    optionalUser =Optional.of(user);
+    optionalUser = Optional.of(user);
   }
 
   /**
@@ -30,7 +32,9 @@ public class OptionalTest {
   @Test
   public void ifPresent() {
     Optional<String> optional = Optional.of("test");
-    optional.ifPresent(value -> { return;});
+    optional.ifPresent(value -> {
+      return;
+    });
 
     System.out.println("exception after");
 //    assertThat(optional.isPresent(),Matchers.is(true));
@@ -40,32 +44,33 @@ public class OptionalTest {
    * 存在即返回, 无则提供默认值
    */
   @Test
-  public void orElse(){
+  public void orElse() {
 
   }
+
   /**
    * 存在即返回, 无则由函数来产生
    */
   @Test
-  public void orElseGet(){
+  public void orElseGet() {
 
   }
 
   @Test
-  public void map(){
-    String name  = optionalUser.map(user -> user.getName())
+  public void map() {
+    String name = optionalUser.map(user -> user.getName())
         .orElse("test");
 
     MatcherAssert.assertThat(name, Matchers.is("name"));
 
-    String address  = optionalUser.map(user -> user.getAddress())
+    String address = optionalUser.map(user -> user.getAddress())
         .orElse("test");
 
     MatcherAssert.assertThat(address, Matchers.is("test"));
   }
 
   @Test
-  public void flatMap(){
+  public void flatMap() {
 
   }
 
@@ -73,7 +78,7 @@ public class OptionalTest {
    * 存在即返回, 无则抛出异常
    */
   @Test
-  public void orElseThrow(){
+  public void orElseThrow() {
 
   }
 }

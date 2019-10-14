@@ -110,13 +110,13 @@ public class ChannelTest {
             socketChannel.register(selector, SelectionKey.OP_WRITE);
             socketChannel.register(selector, SelectionKey.OP_READ);
 
-          } else if (key.isReadable()){//读取数据
+          } else if (key.isReadable()) {//读取数据
             System.out.print("receive message:");
             SocketChannel client = (SocketChannel) key.channel();
             //将缓冲区清空以备下次读取
             readBuffer.clear();
             int num = client.read(readBuffer);
-            System.out.println(new String(readBuffer.array(),0, num));
+            System.out.println(new String(readBuffer.array(), 0, num));
             //注册读操作，下一次读取
             socketChannel.register(selector, SelectionKey.OP_WRITE);
           }
@@ -129,7 +129,7 @@ public class ChannelTest {
   public void serverSocketChannel() throws Exception {
     try (ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
       serverChannel.configureBlocking(false);
-      serverChannel.socket().bind(new InetSocketAddress(InetAddress.getLocalHost(),5454));
+      serverChannel.socket().bind(new InetSocketAddress(InetAddress.getLocalHost(), 5454));
 
       // 通过open()方法找到Selector
       selector = Selector.open();
@@ -196,7 +196,7 @@ public class ChannelTest {
 
   private void write(SelectionKey key) throws IOException, ClosedChannelException {
     SocketChannel channel = (SocketChannel) key.channel();
-    System.out.println("write:"+str);
+    System.out.println("write:" + str);
 
     writeBuffer.clear();
     writeBuffer.put(str.getBytes());
@@ -234,7 +234,7 @@ public class ChannelTest {
     SocketChannel clientChannel = ssc.accept();
     clientChannel.configureBlocking(false);
     clientChannel.register(selector, SelectionKey.OP_READ);
-    System.out.println("a new client connected "+clientChannel.getRemoteAddress());
+    System.out.println("a new client connected " + clientChannel.getRemoteAddress());
   }
 
 

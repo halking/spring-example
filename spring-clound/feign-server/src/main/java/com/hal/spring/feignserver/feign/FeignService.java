@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "service-hi", fallback = FeignServiceHystrix.class)
 public interface FeignService {
 
-    @RequestMapping(value = "/hi", method = RequestMethod.GET)
-    String home(@RequestParam(value = "name") String name);
+  @RequestMapping(value = "/hi", method = RequestMethod.GET)
+  String home(@RequestParam(value = "name") String name);
 }

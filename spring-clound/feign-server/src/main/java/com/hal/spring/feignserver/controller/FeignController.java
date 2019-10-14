@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FeignController {
 
-    @Autowired
-    FeignService feignService;
+  @Autowired
+  FeignService feignService;
 
-    @GetMapping(value = "/hi")
-    public String sayHi(@RequestParam String name) {
-        return feignService.home(name);
-    }
+  @GetMapping(value = "/hi")
+  public String sayHi(@RequestParam String name) {
+    return feignService.home(name);
+  }
 }

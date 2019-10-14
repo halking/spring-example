@@ -18,9 +18,9 @@ public class InetAddressTest {
   public void InetAddress() throws Exception {
     InetAddress address = InetAddress.getLocalHost();
 
-    System.out.println("local address: "+ address);
-    System.out.println("hostName: "+ address.getHostName());
-    System.out.println("ip: "+ address.getHostAddress());
+    System.out.println("local address: " + address);
+    System.out.println("hostName: " + address.getHostName());
+    System.out.println("ip: " + address.getHostAddress());
 
     InetAddress[] ids = InetAddress.getAllByName("www.baidu.com");
     for (InetAddress id : ids) {

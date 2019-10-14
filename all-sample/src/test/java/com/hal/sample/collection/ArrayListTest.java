@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ArrayListTest {
 
   @Test
-  public void init(){
+  public void init() {
     List<Integer> intList = new ArrayList();
     System.out.println(intList.size());
 /*    intList.add(1);

@@ -14,21 +14,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class PredicateTest {
 
   @Test
-  public void testA(){
+  public void testA() {
     test(o -> o instanceof Long);
   }
 
   @Test
-  public void testB(){
+  public void testB() {
     test(o -> o instanceof String);
   }
 
-  private void test(Predicate<Object> predicate){
+  private void test(Predicate<Object> predicate) {
 
-    if (predicate.test("test")){
-      System.out.println(">>>>>>>>>>"+ "test");
-    }else if (predicate.test(2L)){
-      System.out.println(">>>>>>> "+ 2L);
+    if (predicate.test("test")) {
+      System.out.println(">>>>>>>>>>" + "test");
+    } else if (predicate.test(2L)) {
+      System.out.println(">>>>>>> " + 2L);
     }
   }
 }

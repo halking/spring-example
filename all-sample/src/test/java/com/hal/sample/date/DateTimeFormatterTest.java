@@ -18,12 +18,12 @@ public class DateTimeFormatterTest {
   private LocalDateTime now;
 
   @Before
-  public void setup(){
+  public void setup() {
     now = LocalDateTime.now();
   }
 
   @Test
-  public void formatter(){
+  public void formatter() {
     String date = now.format(DateTimeFormatter.ofPattern("dd/MM"));
     System.out.println(now.format(DateTimeFormatter.ofPattern("mmss")));
 //    MatcherAssert.assertThat(date, Matchers.is("29/05"));

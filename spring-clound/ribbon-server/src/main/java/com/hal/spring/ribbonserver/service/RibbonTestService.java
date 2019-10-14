@@ -11,15 +11,15 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class RibbonTestService {
 
-    @Autowired
-    RestTemplate restTemplate;
+  @Autowired
+  RestTemplate restTemplate;
 
-    @HystrixCommand(fallbackMethod = "homeFallback")
-    public String RibbonHome(String name) {
-        return restTemplate.getForObject("http://SERVICE-HI/hi?name=" + name, String.class);
-    }
+  @HystrixCommand(fallbackMethod = "homeFallback")
+  public String RibbonHome(String name) {
+    return restTemplate.getForObject("http://SERVICE-HI/hi?name=" + name, String.class);
+  }
 
-    public String homeFallback(String name) {
-        return "hi," + name + ",sorry,server error!";
-    }
+  public String homeFallback(String name) {
+    return "hi," + name + ",sorry,server error!";
+  }
 }

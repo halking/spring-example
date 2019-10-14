@@ -75,7 +75,7 @@ public class BoutiqueSAImport {
       String ldapName = record.get("Sa_ldap");
       String staffId = record.get("staff_id");
       ldap0429.add(staffId);
-      if (ldap0419.contains(ldapName)){
+      if (ldap0419.contains(ldapName)) {
         continue;
       }
 //      System.out.println(ldapName);
@@ -100,7 +100,7 @@ public class BoutiqueSAImport {
       String ldapName = record.get("Sa_ldap");
       String staffId = record.get("staff_id");
 
-      if (ldap0429.contains(staffId)){
+      if (ldap0429.contains(staffId)) {
         continue;
       }
 
@@ -123,7 +123,7 @@ public class BoutiqueSAImport {
               ? "b'1'" : "b'0'";
       String boutiqueId = UUID.randomUUID().toString().replaceAll("-", "");
 
-      if (boutiqueCode0419.contains(boutique.getBoutiqueCode())){
+      if (boutiqueCode0419.contains(boutique.getBoutiqueCode())) {
         StringBuilder builder = new StringBuilder();
         builder.append("SELECT @").append(boutique.getBoutiqueCode()).append("_id := id ")
             .append("FROM  warm_car_boutique WHERE `boutique_code` = ")
@@ -146,7 +146,6 @@ public class BoutiqueSAImport {
         String boutiqueInsert = sub.replace(boutiqueInsertTemplate);
         line.add(boutiqueInsert);
       }
-
 
       for (Account account : entry.getValue()) {
         //probation

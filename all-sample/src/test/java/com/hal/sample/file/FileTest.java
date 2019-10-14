@@ -19,15 +19,24 @@ public class FileTest {
   private final static String LINUX_PATH = "/usr/local/static/images";
 
   @Test
-  public void pathTest(){
+  public void pathTest() {
     String result = FilenameUtils.getBaseName(WINDOWS_PATH);
-    System.out.println("result:"+result);
+    System.out.println("result:" + result);
 
-    System.out.println("result1:"+FilenameUtils.getBaseName(FilenameUtils.getPathNoEndSeparator(WINDOWS_PATH)));
+    System.out.println("result1:" + FilenameUtils.getBaseName(FilenameUtils.getPathNoEndSeparator(WINDOWS_PATH)));
 
     System.out.println(FilenameUtils.separatorsToSystem(WINDOWS_PATH));
 
     MatcherAssert.assertThat(result, Matchers.equalTo("images"));
   }
+
+  @Test
+  public void baseNameTest() {
+    String name = "test.csv.result";
+    System.out.println(FilenameUtils.getBaseName(name));
+
+    System.out.println(FilenameUtils.concat("var/us", "test.csv"));
+  }
+
 
 }

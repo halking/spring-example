@@ -33,7 +33,7 @@ public class CsvUtil {
   public static void writeCSV(Writer writer, char separator, Object data) {
     try {
       new StatefulBeanToCsvBuilder(writer).withQuotechar(CSVWriter.NO_QUOTE_CHARACTER).withSeparator(separator)
-        .build().write(data);
+          .build().write(data);
     } catch (CsvDataTypeMismatchException e) {
       log.error(e.getMessage(), e);
       throw new BaseException(e.getMessage(), e);
@@ -54,8 +54,8 @@ public class CsvUtil {
 
   public static <T> List<T> readCSV(Reader reader, char separator, Class<T> clazz) {
     return new CsvToBeanBuilder(reader).withType(clazz)
-      .withSeparator(separator)
-      .withIgnoreLeadingWhiteSpace(true)
-      .build().parse();
+        .withSeparator(separator)
+        .withIgnoreLeadingWhiteSpace(true)
+        .build().parse();
   }
 }

@@ -8,7 +8,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 @EnableConfigServer
 public class CloundConfigServerApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(CloundConfigServerApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(CloundConfigServerApplication.class, args);
+  }
 }

@@ -15,9 +15,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class UriComponentTest {
 
   @Test
-  public void paramTest(){
-    UriComponents  components = UriComponentsBuilder
-        .fromPath("https://localhost:8080/uri/test?a=a&b=b").queryParam("a","a=a")
+  public void paramTest() {
+    UriComponents components = UriComponentsBuilder
+        .fromPath("https://localhost:8080/uri/test?a=a&b=b").queryParam("a", "a=a")
         .buildAndExpand("uriValue");
 
     System.out.println(components.getPathSegments());

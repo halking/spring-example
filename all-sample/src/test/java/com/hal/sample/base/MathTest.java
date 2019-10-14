@@ -13,13 +13,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MathTest {
 
   @Test
-  public void parseInteger(){
+  public void parseInteger() {
     Integer i = null;
     System.out.println(Integer.toString(i));
   }
 
   @Test
-  public void test1(){
+  public void test1() {
     int index1 = 1 % 8;
     int index2 = 2 % 8;
     int index3 = 3 % 8;

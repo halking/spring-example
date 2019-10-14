@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hal.spring</groupId>
-    <artifactId>spring-clound</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+  <groupId>com.hal.spring</groupId>
+  <artifactId>spring-clound</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
 
-    <modules>
-        <module>clound-config-client</module>
-        <module>clound-config-server</module>
-        <module>clound-service-client</module>
-        <module>clound-service-client-a</module>
-        <module>clound-service-server</module>
-        <module>clound-sleuth</module>
-        <module>feign-server</module>
-        <module>hystrix</module>
-        <module>ribbon-server</module>
-        <module>zuul</module>
-    </modules>
+  <modules>
+    <module>clound-config-client</module>
+    <module>clound-config-server</module>
+    <module>clound-service-client</module>
+    <module>clound-service-client-a</module>
+    <module>clound-service-server</module>
+    <module>clound-sleuth</module>
+    <module>feign-server</module>
+    <module>hystrix</module>
+    <module>ribbon-server</module>
+    <module>zuul</module>
+  </modules>
 
 </project>

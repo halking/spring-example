@@ -102,7 +102,7 @@ public class JsonUtil {
   public static <T> String objectToJson(Object object) throws Exception {
     try {
       return getMapperInstance(false).setSerializationInclusion(Include.NON_NULL)
-        .writeValueAsString(object);
+          .writeValueAsString(object);
     } catch (IOException e) {
       throw new Exception(e.getMessage(), e);
     }
@@ -117,7 +117,7 @@ public class JsonUtil {
   public static JsonNode stringToJsonNode(String jsonStr) throws Exception {
     try {
       return getMapperInstance(false).setSerializationInclusion(Include.NON_NULL)
-        .readTree(jsonStr);
+          .readTree(jsonStr);
     } catch (IOException e) {
       throw new Exception(e.getMessage(), e);
     }
@@ -135,7 +135,7 @@ public class JsonUtil {
    */
   @SafeVarargs
   public static <T> String objectToJsonExtended(Object object, Class<T>... subTypeClasses)
-    throws Exception {
+      throws Exception {
     try {
       ObjectMapper mapper = getMapperInstance(!ArrayUtils.isEmpty(subTypeClasses));
       mapper.registerSubtypes(subTypeClasses);

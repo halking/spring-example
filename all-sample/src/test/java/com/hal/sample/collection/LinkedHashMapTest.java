@@ -25,7 +25,7 @@ public class LinkedHashMapTest {
   }
 
   @Test
-  public void put(){
+  public void put() {
     map.put("a", "a1");
     map.put("b", "b1");
     map.put("c", "c1");
@@ -37,7 +37,7 @@ public class LinkedHashMapTest {
       System.out.println(entry.getKey() + "->" + entry.getValue());
     }
 
-    Map<String, String> accessMap = new LinkedHashMap<>(10,0.75f, true);
+    Map<String, String> accessMap = new LinkedHashMap<>(10, 0.75f, true);
     accessMap.put("a", "a1");
     accessMap.put("b", "b1");
     accessMap.put("c", "c1");
