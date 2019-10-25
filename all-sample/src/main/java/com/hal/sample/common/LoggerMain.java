@@ -14,7 +14,7 @@ public class LoggerMain {
   public static void main(String argv[]) {
     // Log a FINE tracing message
     logger.fine("doing stuff");
-    try{
+    try {
       System.out.println("test logger");
     } catch (Exception ex) {
       // Log the exception

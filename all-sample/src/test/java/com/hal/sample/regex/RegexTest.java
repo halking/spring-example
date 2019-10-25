@@ -17,10 +17,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class RegexTest {
 
   @Test
-  public void StrTest(){
+  public void StrTest() {
     String regex = "CAR_\\w+_%s";
 
-    String text = "CAR_TEST_20190925";
+    String text = "CAR_TEST_20191018";
 
     String s = LocalDateTime.now().format(DateTimeFormatter.ofPattern(Constant.YYYYMMDD));
 

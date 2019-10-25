@@ -55,9 +55,9 @@ public class CryptoTest {
   }
 
   @Test
-  public void adminTest(){
+  public void adminTest() {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    String pwd = "Ray@ban!2";
+    String pwd = "Yt1357Yt2468";
     String result = passwordEncoder.encode(pwd);
     System.out.println(result);
   }
