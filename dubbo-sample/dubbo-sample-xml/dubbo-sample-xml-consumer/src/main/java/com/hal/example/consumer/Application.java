@@ -20,12 +20,13 @@ import com.hal.example.service.SampleService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Application {
-    public static void main(String[] args) throws Exception {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dubbo-consumer.xml");
-        context.start();
 
-        SampleService sampleService = context.getBean("sampleService", SampleService.class);
+  public static void main(String[] args) throws Exception {
+    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dubbo-consumer.xml");
+    context.start();
 
-        System.out.println(sampleService.doTest("xml-sample"));
-    }
+    SampleService sampleService = context.getBean("sampleService", SampleService.class);
+
+    System.out.println(sampleService.doTest("xml-sample"));
+  }
 }
