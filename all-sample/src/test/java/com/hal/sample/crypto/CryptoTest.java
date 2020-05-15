@@ -26,27 +26,24 @@ public class CryptoTest {
 
     Map<String, String> deMap = Maps.newLinkedHashMap();
 
-    List<String> users = Lists.newArrayList("valentina.xie@herschel.com",
-        "isabella.liu@herschel.com",
-        "zhuofeng.gu@baozun.com",
-        "xinxing.li@baozun.com",
-        "xiaoqing.wang@baozun.com",
-        "jieting.fu@baozun.com",
-        "ling.chen1@baozun.com",
-        "ryan.zhao@herschel.com",
-        "vivian.chen@herschel.com",
-        "jiahao.chen1@baozun.com",
-        "wenjie.ji@baozun.com");
+    List<String> users = Lists.newArrayList("steven.huang@digibridge.cn",
+        "philippe.han@digibridge.cn",
+        "lacoste.cs@galaxeed.com",
+        "CrHuang@lacoste.com",
+        "SaYang@lacoste.com",
+        "DLu@lacoste.com",
+        "wwang@lacoste.com",
+        "Jcao@lacoste.com");
 
     for (String user : users) {
-      String pwd = "Herschel" + RandomStringUtils.randomNumeric(4);
+      String pwd = "Lac@" + RandomStringUtils.randomAlphanumeric(6);
       deMap.put(user, pwd);
       String result = passwordEncoder.encode(pwd);
       enMap.put(user, result);
     }
 
     deMap.entrySet().forEach(entry -> {
-      System.out.println(entry.getKey() + "=" + entry.getValue());
+      System.out.println(entry.getKey() + ":" + entry.getValue());
     });
 
     enMap.entrySet().forEach(entry -> {
@@ -57,7 +54,7 @@ public class CryptoTest {
   @Test
   public void adminTest() {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    String pwd = "Yt1357Yt2468";
+    String pwd = "Lacoste@Admin";
     String result = passwordEncoder.encode(pwd);
     System.out.println(result);
   }

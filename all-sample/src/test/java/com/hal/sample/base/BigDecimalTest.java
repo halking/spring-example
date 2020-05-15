@@ -37,6 +37,8 @@ public class BigDecimalTest {
     System.out.println(zero);
     System.out.println(result);
     System.out.println(new BigDecimal(20).setScale(2));
+
+    System.out.println(new BigDecimal(10).add(new BigDecimal(-5)));
   }
 
   @Test
@@ -44,6 +46,8 @@ public class BigDecimalTest {
     BigDecimal ten = BigDecimal.TEN;
     BigDecimal three = new BigDecimal(3);
     System.out.println(ten.divide(three, 2, RoundingMode.HALF_UP));
+
+    System.out.println(new BigDecimal(-24.3).setScale(0, RoundingMode.HALF_UP));
 
   }
 
@@ -62,4 +66,6 @@ public class BigDecimalTest {
     System.out.println(amount);
     System.out.println(new BigDecimal(amount).setScale(2, RoundingMode.HALF_UP));
   }
+
+
 }

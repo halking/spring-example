@@ -8,6 +8,7 @@ import com.google.common.collect.Sets;
 import com.hal.sample.dto.GroupSessionDto;
 import com.hal.sample.entity.User;
 import com.hal.sample.enums.SourceType;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -94,5 +95,17 @@ public class StreamTest {
     System.out.println(sessions);
 
     MatcherAssert.assertThat(startDate, is(LocalDate.of(2019, 1, 31)));
+  }
+
+  @Test
+  public void reduce() {
+    List<BigDecimal> integers = Lists.newArrayList();
+
+    BigDecimal sum = integers.stream()
+        .filter(o -> o.compareTo(BigDecimal.ONE) >= 0)
+        .reduce(BigDecimal.ZERO, (pre, curr) -> pre.add(curr));
+
+    System.out.println(sum);
+    MatcherAssert.assertThat(sum, is(BigDecimal.ZERO));
   }
 }

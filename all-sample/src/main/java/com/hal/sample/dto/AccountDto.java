@@ -1,5 +1,6 @@
 package com.hal.sample.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class AccountDto {
 
   private String avatar;
 
+  @JsonProperty(value = "staff_id")
   private String staffId;
 
   private String mpUserId;

@@ -5,11 +5,24 @@ server:
   tomcat:
     uri-encoding: UTF-8
 spring:
+  profiles:
+    active: local
   http:
     encoding:
       charset: UTF-8
       force: true
       enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,metrics,prometheus
+    metrics:
+      enabled: true
+
 scheduler:
   reminder-delete:
     enabled: false
+
+

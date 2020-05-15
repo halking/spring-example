@@ -2,6 +2,7 @@ package com.hal.sample.base;
 
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.BooleanUtils;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -26,7 +27,7 @@ public class BooleanTest {
     MatcherAssert.assertThat(value, Matchers.is(0));
   }
 
-  //  @Test
+  @Test
   public void nullOr() {
     String flag = null;
 
@@ -38,6 +39,9 @@ public class BooleanTest {
       System.out.println("null or");
     }
 
+    MatcherAssert.assertThat(flag, Matchers.is(0));
+
+    System.out.println(BooleanUtils.isTrue(null));
   }
 
   @Test
@@ -54,6 +58,8 @@ public class BooleanTest {
 
     if (s != null) {
     }
+
+    System.out.println(BooleanUtils.isTrue(null));
 
   }
 
