@@ -1,0 +1,5 @@
+labs:
+  env: dev
+  data:
+    name: huang
+    address: 上海
