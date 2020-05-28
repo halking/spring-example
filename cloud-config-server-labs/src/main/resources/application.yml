@@ -1,11 +1,22 @@
+## server 閰嶇疆
 server:
   port: 8010
 
+## actuator 閰嶇疆
 management:
   endpoints:
     web:
       base-path: /manage
 
+## eureka 閰嶇疆
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://test:123456@localhost:8020/eureka/
+  instance:
+    prefer-ip-address: true  #浠P鍦板潃娉ㄥ唽鍒版湇鍔′腑蹇冿紝鐩镐簰娉ㄥ唽浣跨敤IP鍦板潃
 
 spring:
   application:
@@ -14,6 +25,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/halking/spring-example #配置文件所在仓库
-          default-label: develop #配置文件分支
-          search-paths: spring-config  #配置文件所在根目录
+          uri: https://github.com/halking/spring-example #浠撳簱鍦板潃
+          default-label: develop #鍒嗘敮
+          search-paths: spring-config  #鐩綍
+
