@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      name: config-server-labs
+      uri: http://localhost:8010
+      label: develop
+      profile: dev
+
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      name: config-server-labs
+      uri: http://localhost:8010
+      label: develop
+      profile: prod

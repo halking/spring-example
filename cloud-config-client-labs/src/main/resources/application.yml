@@ -1,0 +1,17 @@
+server:
+  port: 8011
+  servlet:
+    context-path: /config-client-labs
+
+management:
+  endpoints:
+    shutdown:
+      enabled: false
+    web:
+      base-path: /manage
+      exposure:
+        include: "*"
+
+spring:
+  application:
+    name: config-client-labs
