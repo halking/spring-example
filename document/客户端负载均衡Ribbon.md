@@ -50,7 +50,8 @@
 [client.server.name].ribbon.listOfServers=localhost:8001,localhost:8002,localhost:8003
 
 **与Eureka集成**
-![与Eureka集成说明](https://github.com/halking/spring-example/tree/develop/document/ribbon-eureka.png)
+![与Eureka集成说明](ribbon-eureka.png "与Eureka集成说明")
+
 
 2:禁用Eureka对Ribbon服务实例的维护实现
 ```json
