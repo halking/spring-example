@@ -1,0 +1,23 @@
+server:
+  port: 8040
+  servlet:
+    context-path: /cloud-client-service
+
+management:
+  endpoints:
+    shutdown:
+      enabled: false
+    web:
+      base-path: /manage
+      exposure:
+        include: "*"
+
+## eureka 配置
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://test:123456@localhost:8020/eureka/
+  instance:
+    prefer-ip-address: true  #以IP地址注册到服务中心，相互注册使用IP地址
