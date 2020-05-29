@@ -3,6 +3,7 @@ server:
   servlet:
     context-path: /fegin-labs
 
+
 management:
   endpoints:
     shutdown:
@@ -33,4 +34,8 @@ feign:
         read-timeout: 5000
         logger-level: basic
   hystrix:
+    enabled: true
+
+ribbon:
+  eureka:
     enabled: true

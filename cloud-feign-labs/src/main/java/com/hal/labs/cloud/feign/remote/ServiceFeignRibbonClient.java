@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Author: Steven HUANG
  * @Date: 2020/5/29
  */
-@FeignClient(value = "cloud-client-service-feign", url = "http://localhost:8040/cloud-client-service",
-    configuration = FeignConfiguration.class, path = "/api/v1/client", fallback = ServiceFeignFallback.class)
-public interface ServiceFeignClient {
+@FeignClient(value = "cloud-client-service", configuration = FeignConfiguration.class,
+    path = "/client-service/api/v1/client")
+public interface ServiceFeignRibbonClient {
 
   @GetMapping
   String getInfo(@RequestParam("name") String name, @RequestHeader("token") String token);
