@@ -3,6 +3,11 @@ server:
   servlet:
     context-path: /fegin-labs
 
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
 
 management:
   endpoints:
@@ -39,3 +44,9 @@ feign:
 ribbon:
   eureka:
     enabled: true
+  connectTimeout: 3000 #单位ms,请求连接超时时间
+  readTimeout: 10000 #单位ms,请求处理的超时时间
+  okToRetryOnAllOperations: true #对所有操作请求都进行重试
+  maxAutoRetriesNextServer: 2 #切换实例的重试次数
+  maxAutoRetries: 1 #对当前实例的重试次数
+
