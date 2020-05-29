@@ -1,5 +1,7 @@
 package com.hal.labs.cloud.feign.config;
 
+import com.hal.labs.cloud.feign.custom.CustomErrorDecoder;
+import feign.codec.ErrorDecoder;
 import okhttp3.OkHttpClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,5 +34,14 @@ public class FeignConfiguration {
       requestTemplate.header("Accept", ContentType.APPLICATION_JSON.getMimeType());
     };
   }*/
+
+  /**
+   * 自定义error decoder
+   * @return
+   */
+  @Bean
+  public ErrorDecoder errorDecoder() {
+    return new CustomErrorDecoder();
+  }
 
 }
