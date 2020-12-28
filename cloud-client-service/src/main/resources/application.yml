@@ -1,7 +1,7 @@
 server:
   port: 8040
   servlet:
-    context-path: /cloud-client-service
+    context-path: /client-service
 
 management:
   endpoints:

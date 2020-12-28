@@ -29,7 +29,8 @@ public class LocalDateTimeTest {
 
   @Test
   public void get() {
-    LocalDateTime now = LocalDateTime.now().plusDays(100);
+    LocalDateTime now = LocalDateTime.now();
+    System.out.println(now.minusMonths(12));
 
     System.out.println("year : " + now.getYear());
     System.out.println("month : " + now.getMonthValue());

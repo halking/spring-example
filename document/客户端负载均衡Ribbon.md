@@ -49,9 +49,8 @@
 没有服务治理框架的帮助,需要为该客户端指定具体的实例清单,指定具体的服务名来做详细的配置
 [client.server.name].ribbon.listOfServers=localhost:8001,localhost:8002,localhost:8003
 
-**与Eureka集成**
-![与Eureka集成说明](ribbon-eureka.png "与Eureka集成说明")
-
+**与Eureka集成**      
+![与Eureka集成说明](ribbon-eureka.png  "与Eureka集成说明")
 
 2:禁用Eureka对Ribbon服务实例的维护实现
 ```json

@@ -4,7 +4,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import java.util.List;
 import java.util.Map;
-import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,17 +27,10 @@ public class CryptoTest {
 
     Map<String, String> deMap = Maps.newLinkedHashMap();
 
-    List<String> users = Lists.newArrayList("steven.huang@digibridge.cn",
-        "philippe.han@digibridge.cn",
-        "lacoste.cs@galaxeed.com",
-        "CrHuang@lacoste.com",
-        "SaYang@lacoste.com",
-        "DLu@lacoste.com",
-        "wwang@lacoste.com",
-        "Jcao@lacoste.com");
+    List<String> users = Lists.newArrayList("nuttAdmin");
 
     for (String user : users) {
-      String pwd = "Lac@" + RandomStringUtils.randomAlphanumeric(6);
+      String pwd = StringUtils.substring(user, 0 ,StringUtils.indexOf(user, "@"));
       deMap.put(user, pwd);
       String result = passwordEncoder.encode(pwd);
       enMap.put(user, result);
@@ -54,9 +48,16 @@ public class CryptoTest {
   @Test
   public void adminTest() {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    String pwd = "Lacoste@Admin";
+    String pwd = "$yP(BrkVbh#0";
     String result = passwordEncoder.encode(pwd);
     System.out.println(result);
+  }
+
+  @Test
+  public void md5() {
+    String timestamp = String.valueOf(System.currentTimeMillis());
+    String token = DigestUtils.md5Hex(timestamp + "exiangsui2020");
+    System.out.println("timestamp:"+timestamp + "\n token:"+token);
   }
 
 }

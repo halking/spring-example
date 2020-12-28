@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2020/5/26
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/config")
 public class ConfigController {
 
   @Autowired
   private ConfigProperties configProperties;
 
-  @GetMapping("/config")
+  @GetMapping
   public ResponseEntity getConfig(){
     return ResponseEntity.ok(configProperties);
   }

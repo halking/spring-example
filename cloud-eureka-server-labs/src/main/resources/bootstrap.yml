@@ -1,11 +1,15 @@
 spring:
   application:
     name: cloud-eureka-center
+  security:
+    user:
+      name: test  # 用户名
+      password: 123456   # 密码
   cloud:
     inetutils: ## 网卡设置
-      ignoredInterfaces:  ## 忽略的网卡
+      ignored-interfaces:
       - docker0
       - veth.*
       - VM.*
-      preferredNetworks:  ## 优先的网段
+      preferred-networks:
       - 192.168
