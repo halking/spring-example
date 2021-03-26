@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import org.apache.commons.lang3.ArrayUtils;
@@ -49,6 +50,14 @@ public class JsonUtil {
   public static <T> T jsonToObject(String json, Class<T> clazz) throws Exception {
     try {
       return getMapperInstance(false).readValue(json, clazz);
+    } catch (IOException e) {
+      throw new Exception(e.getMessage(), e);
+    }
+  }
+
+  public static <T> T jsonToObject(File file, Class<T> clazz) throws Exception {
+    try {
+      return getMapperInstance(false).readValue(file, clazz);
     } catch (IOException e) {
       throw new Exception(e.getMessage(), e);
     }
@@ -118,6 +127,15 @@ public class JsonUtil {
     try {
       return getMapperInstance(false).setSerializationInclusion(Include.NON_NULL)
           .readTree(jsonStr);
+    } catch (IOException e) {
+      throw new Exception(e.getMessage(), e);
+    }
+  }
+
+  public static JsonNode fileToJsonNode(File file) throws Exception {
+    try {
+      return getMapperInstance(false).setSerializationInclusion(Include.NON_NULL)
+          .readTree(file);
     } catch (IOException e) {
       throw new Exception(e.getMessage(), e);
     }

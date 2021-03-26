@@ -1,6 +1,7 @@
 package com.hal.sample.jdk8;
 
 import com.google.common.collect.Maps;
+import com.hal.sample.util.JsonUtil;
 import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +32,19 @@ public class MapTest {
     mapA.put("b", 1);
 
     System.out.println(mapA.get("c"));
+
+  }
+
+
+  @Test
+  public void merge() throws Exception {
+
+    mapA.put("a", 1);
+    mapA.put("b", 1);
+    mapA.merge("a", 2, (integer, integer2) -> integer2);
+    mapA.merge("b", 2, (integer, integer2) -> null);
+    mapA.merge("c", 3, (integer, integer2) -> integer2);
+    System.out.println(JsonUtil.objectToJson(mapA));
 
   }
 

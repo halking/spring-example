@@ -208,9 +208,9 @@ public class ExcelUtil {
         ExcelField attr = field.getAnnotation(ExcelField.class);
         Integer col = cellMap.get(attr.title());
         //validate excel template
-        if (col == null) {
+ /*       if (col == null) {
           throw new RuntimeException("Excel template is invalid...");
-        }
+        }*/
         field.setAccessible(true);
         fieldsMap.put(col, field);
       }

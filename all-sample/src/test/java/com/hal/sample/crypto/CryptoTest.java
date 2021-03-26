@@ -48,7 +48,7 @@ public class CryptoTest {
   @Test
   public void adminTest() {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    String pwd = "$yP(BrkVbh#0";
+    String pwd = "tracy@Admin";
     String result = passwordEncoder.encode(pwd);
     System.out.println(result);
   }

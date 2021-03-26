@@ -1,6 +1,7 @@
 package com.hal.sample.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.nio.charset.StandardCharsets;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,5 +31,10 @@ public class AccountDto {
   private String staffId;
 
   private String mpUserId;
+
+  public static void main(String[] args) {
+      System.out.println(org.springframework.util.DigestUtils.md5DigestAsHex("13967167593".getBytes()));
+      System.out.println(org.springframework.util.DigestUtils.md5DigestAsHex("13967167593".getBytes(StandardCharsets.UTF_8)));
+  }
 
 }

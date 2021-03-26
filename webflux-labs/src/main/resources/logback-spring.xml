@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+  <springProperty name="LOG_PATH" source="logging.file.path"/>
+  <springProperty name="LOG_NAME" source="spring.application.name"/>
+
+  <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+
+  <!-- console config -->
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>[%d{yyyyMMdd HH:mm:ss.SSS}] [%X{transaction.id}] [${HOSTNAME}] [%thread] %-5level %logger{36} - %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <!--file config-->
+  <appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOG_PATH}/${LOG_NAME}.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_PATH}/${LOG_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%d{yyyyMMdd HH:mm:ss.SSS}] [%X{transaction.id}] [${HOSTNAME}] [%thread] %-5level %logger{36} - %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <appender name="jsonFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOG_PATH}/${LOG_NAME}.json</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_PATH}/${LOG_NAME}.%d{yyyy-MM-dd}.json</fileNamePattern>
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+    <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+      <providers>
+        <timestamp>
+          <timeZone>UTC</timeZone>
+        </timestamp>
+        <pattern>
+          <pattern>
+            {
+            "hose_name": "${HOSTNAME}",
+            "app": "${LOG_NAME}",
+            "level": "%level",
+            "thread": "%thread",
+            "timestamp": "%d{yyyyMMdd HH:mm:ss.SSS}",
+            "class_name": "%class",
+            "line_number": "%line",
+            "thread": "%thread",
+            "message": "%message",
+            "transaction_id": "%X{transaction.id}",
+            "stack_trace": "%exception{10}"
+            }
+          </pattern>
+        </pattern>
+      </providers>
+    </encoder>
+  </appender>
+
+  <springProfile name="local">
+    <root level="info">
+      <appender-ref ref="console"/>
+      <appender-ref ref="logFile"/>
+    </root>
+    <logger name="com.hal.labs" level="debug" additivity="false">
+      <appender-ref ref="console"/>
+      <appender-ref ref="logFile"/>
+    </logger>
+  </springProfile>
+
+</configuration>

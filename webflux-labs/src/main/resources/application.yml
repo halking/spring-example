@@ -1,0 +1,30 @@
+server:
+  servlet:
+    context-path: /webflux-labs
+  time-zone: GMT+8
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: webflux-labs
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        enable_lazy_load_no_trans: true
+
+  redis:
+    timeout: 2000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 1
+
+management:
+  endpoints:
+    web:
+      base-path: /manage
