@@ -18,7 +18,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-statemachine.version>2.0.1.RELEASE</spring-statemachine.version>
-        <apache.poi.version>4.0.0</apache.poi.version>
+        <apache.poi.version>4.1.1</apache.poi.version>
         <apache.commons.lang3.version>3.7</apache.commons.lang3.version>
         <commons.collections.version>3.2.2</commons.collections.version>
         <commons.io.version>2.6</commons.io.version>
