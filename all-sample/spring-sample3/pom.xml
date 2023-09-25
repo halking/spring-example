@@ -5,27 +5,24 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.1.RELEASE</version>
+    <version>3.1.4</version>
     <relativePath/> <!-- lookup parent from.txt repository -->
   </parent>
   <groupId>com.hal.sample</groupId>
   <artifactId>spring-sample3</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>spring-sample3</name>
-  <description>Demo project for Spring Boot</description>
+  <description>Demo project for Spring Boot3</description>
 
   <properties>
-    <java.version>1.8</java.version>
-    <spring-statemachine.version>2.0.1.RELEASE</spring-statemachine.version>
-    <apache.poi.version>4.0.0</apache.poi.version>
-    <apache.commons.lang3.version>3.7</apache.commons.lang3.version>
-    <commons.collections.version>3.2.2</commons.collections.version>
-    <commons.io.version>2.6</commons.io.version>
-    <commons.codec.version>1.11</commons.codec.version>
-    <guava.version>25.1-jre</guava.version>
-    <jackson.version>2.9.4</jackson.version>
-    <gson.version>2.8.0</gson.version>
+    <java.version>17</java.version>
+    <spring-statemachine.version>3.2.1</spring-statemachine.version>
+    <apache.commons.lang3.version>3.13.0</apache.commons.lang3.version>
+    <commons.collections.version>4.4</commons.collections.version>
+    <commons.io.version>2.13.0</commons.io.version>
+    <commons.codec.version>1.16.0</commons.codec.version>
+    <guava.version>32.1.2-jre</guava.version>
     <tinypinyin.version>2.0.0</tinypinyin.version>
     <opencsv.version>4.6</opencsv.version>
     <jsch.version>0.1.55</jsch.version>
@@ -206,49 +203,6 @@
       <artifactId>commons-text</artifactId>
       <version>1.6</version>
     </dependency>
-    <!--reactor的核心包，提供一些核心组件，如Flux和Mono-->
-    <!--    <dependency>
-          <groupId>io.projectreactor</groupId>
-          <artifactId>reactor-core</artifactId>
-          <version>3.5.0</version>
-        </dependency>
-        &lt;!&ndash;提供Reactor相关测试类的包，如StepVerifierAPI&ndash;&gt;
-        <dependency>
-          <groupId>io.projectreactor</groupId>
-          <artifactId>reactor-test</artifactId>
-          <version>3.5.0</version>
-          <scope>test</scope>
-        </dependency>
-        <dependency>
-          <groupId>io.lettuce</groupId>
-          <artifactId>lettuce-core</artifactId>
-          <version>5.0.4.RELEASE</version>
-        </dependency>-->
-    <!--    <dependency>
-          <groupId>io.projectreactor</groupId>
-          <artifactId>reactor-stream</artifactId>
-          <version>2.0.8.RELEASE</version>
-        </dependency>
-        <dependency>
-          <groupId>org.reactivestreams</groupId>
-          <artifactId>reactive-streams</artifactId>
-          <version>1.0.4</version>
-        </dependency>-->
-
-    <!-- https://mvnrepository.com/artifact/io.projectreactor.tools/blockhound -->
-    <!--    <dependency>-->
-    <!--      <groupId>io.projectreactor.tools</groupId>-->
-    <!--      <artifactId>blockhound</artifactId>-->
-    <!--      <version>1.0.6.RELEASE</version>-->
-    <!--      <scope>provided</scope>-->
-    <!--    </dependency>-->
-    <!-- https://mvnrepository.com/artifact/io.projectreactor.tools/blockhound-junit-platform -->
-    <!--    <dependency>-->
-    <!--      <groupId>io.projectreactor.tools</groupId>-->
-    <!--      <artifactId>blockhound-junit-platform</artifactId>-->
-    <!--      <version>1.0.6.RELEASE</version>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
   </dependencies>
 
   <dependencyManagement>
